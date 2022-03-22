@@ -33,9 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-
         edt_username = findViewById(R.id.edt_username);
         edt_password = findViewById(R.id.edt_password);
         txt_message = findViewById(R.id.txt_message);
@@ -62,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(LoginActivity.this, SignUpActivity.class);
         startActivity(intent);
+
     }
 
     private void btnLoginListener() {
@@ -74,11 +72,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Customer> call, Response<Customer> response) {
                 Customer customer = response.body();
-                txt_message.setText("Login success");
+                if (customer == null) {
+                    txt_message.setText("Invalid username or password");
+                } else {
+                    txt_message.setText("Login Success");
+                }
             }
             @Override
             public void onFailure(Call<Customer> call, Throwable t) {
-                txt_message.setText("Invalid username or password");
+                txt_message.setText("Error");
             }
         });
     }

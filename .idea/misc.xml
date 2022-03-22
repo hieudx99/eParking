@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/ic_back.xml" value="0.2985" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_edittext.xml" value="0.2985" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/login_activity.xml" value="0.25" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/signup_activity.xml" value="0.25101351351351353" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/toolbar.xml" value="0.5" />
       </map>
     </option>
   </component>
