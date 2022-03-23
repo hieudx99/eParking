@@ -2,7 +2,7 @@ package com.example.eparking.model;
 
 public class Customer {
     private int id;
-    private String fullName;
+    private String fullname;
     private String identityCard;
     private String telephone;
     private String address;
@@ -10,9 +10,18 @@ public class Customer {
     private String password;
 
 
-    public Customer(int id, String fullName, String identityCard, String telephone, String address, String username, String password) {
+    public Customer(int id, String fullname, String identityCard, String telephone, String address, String username, String password) {
         this.id = id;
-        this.fullName = fullName;
+        this.fullname = fullname;
+        this.identityCard = identityCard;
+        this.telephone = telephone;
+        this.address = address;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Customer(String fullname, String identityCard, String telephone, String address, String username, String password) {
+        this.fullname = fullname;
         this.identityCard = identityCard;
         this.telephone = telephone;
         this.address = address;
@@ -29,11 +38,11 @@ public class Customer {
     }
 
     public String getFullName() {
-        return fullName;
+        return fullname;
     }
 
     public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.fullname = fullName;
     }
 
     public String getIdentityCard() {

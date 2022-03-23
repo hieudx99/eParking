@@ -17,4 +17,6 @@ public interface CustomerService {
     @POST("customer/login")
     Call<Customer> checkLogin(@Body Credential credential);
 
+    @POST("customer/register")
+    Call<Customer> register(@Body Customer customer);
 }
