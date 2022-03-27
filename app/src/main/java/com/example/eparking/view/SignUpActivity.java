@@ -1,24 +1,20 @@
 package com.example.eparking.view;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.eparking.R;
-import com.example.eparking.model.Customer;
-import com.example.eparking.service.CustomerService;
+import com.example.eparking.model.User;
+import com.example.eparking.service.UserService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -92,29 +88,32 @@ public class SignUpActivity extends AppCompatActivity {
             });
             alert.create().show();
         } else {
-            Customer customer = new Customer(fullname, identityCard, telephone, address, username, password);
-            Call<Customer> regiser = CustomerService.customerService.register(customer);
-            regiser.enqueue(new Callback<Customer>() {
+            User user = new User(username, password, fullname, identityCard, telephone, address);
+            Call<User> regiser = UserService.USER_SERVICE.register(user);
+            regiser.enqueue(new Callback<User>() {
                 @Override
-                public void onResponse(Call<Customer> call, Response<Customer> response) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(SignUpActivity.this);
-                    alert.setTitle("Thông báo");
-                    alert.setIcon(R.mipmap.ic_launcher);
-                    alert.setMessage("Đăng ký thành công!");
-                    alert.setNegativeButton("Đăng nhập", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent();
-                            intent.setClass(SignUpActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                    alert.create().show();
+                public void onResponse(Call<User> call, Response<User> response) {
+                    User user1 = response.body();
+                    if (user1 != null) {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(SignUpActivity.this);
+                        alert.setTitle("Thông báo");
+                        alert.setIcon(R.mipmap.ic_launcher);
+                        alert.setMessage("Đăng ký thành công! ID = " + user1.getId());
+                        alert.setNegativeButton("Đăng nhập", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent();
+                                intent.setClass(SignUpActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                        alert.create().show();
+                    }
 
                 }
 
                 @Override
-                public void onFailure(Call<Customer> call, Throwable t) {
+                public void onFailure(Call<User> call, Throwable t) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(SignUpActivity.this);
                     alert.setTitle("Thông báo");
                     alert.setIcon(R.mipmap.ic_launcher);

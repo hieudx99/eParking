@@ -8,13 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eparking.R;
-import com.example.eparking.service.CustomerService;
-import com.example.eparking.model.Customer;
+import com.example.eparking.service.UserService;
+import com.example.eparking.model.User;
 import com.example.eparking.model.dto.Credential;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,19 +68,25 @@ public class LoginActivity extends AppCompatActivity {
         String password = edt_password.getText().toString();
         Credential credential = new Credential(username, password);
         txt_message.setVisibility(View.VISIBLE);
-        Call<Customer> checkLogin = CustomerService.customerService.checkLogin(credential);
-        checkLogin.enqueue(new Callback<Customer>() {
+        Call<User> checkLogin = UserService.USER_SERVICE.checkLogin(credential);
+        checkLogin.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<Customer> call, Response<Customer> response) {
-                Customer customer = response.body();
-                if (customer == null) {
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                if (user == null) {
                     txt_message.setText("Invalid username or password");
                 } else {
-                    txt_message.setText("Login Success");
+                    String role = user.getRole().getName();
+                    if (role.equalsIgnoreCase("user")) {
+                        txt_message.setText("Logged in as user");
+                    } else if (role.equalsIgnoreCase("admin")) {
+                        txt_message.setText("Logged in as admin");
+                    }
+
                 }
             }
             @Override
-            public void onFailure(Call<Customer> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 txt_message.setText("Error");
             }
         });

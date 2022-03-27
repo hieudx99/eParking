@@ -1,12 +1,9 @@
 package com.example.eparking.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.List;
 
-public class Customer {
+public class User {
     private int id;
     private String fullname;
     private String identityCard;
@@ -14,27 +11,31 @@ public class Customer {
     private String address;
     private String username;
     private String password;
+    private Role role;
+    private List<Car> listCar;
 
-    public Customer() {
+    public User() {
     }
 
-    public Customer(int id, String fullname, String identityCard, String telephone, String address, String username, String password) {
+    public User(int id, String username, String password, String fullname, String identityCard, String telephone, String address, Role role, List<Car> listCar) {
         this.id = id;
+        this.username = username;
+        this.password = password;
         this.fullname = fullname;
         this.identityCard = identityCard;
         this.telephone = telephone;
         this.address = address;
-        this.username = username;
-        this.password = password;
+        this.role = role;
+        this.listCar = listCar;
     }
 
-    public Customer(String fullname, String identityCard, String telephone, String address, String username, String password) {
+    public User(String username, String password, String fullname, String identityCard, String telephone, String address) {
+        this.username = username;
+        this.password = password;
         this.fullname = fullname;
         this.identityCard = identityCard;
         this.telephone = telephone;
         this.address = address;
-        this.username = username;
-        this.password = password;
     }
 
     public int getId() {
@@ -43,6 +44,22 @@ public class Customer {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFullname() {
@@ -77,21 +94,19 @@ public class Customer {
         this.address = address;
     }
 
-    public String getUsername() {
-        return username;
+    public Role getRole() {
+        return role;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public String getPassword() {
-        return password;
+    public List<Car> getListCar() {
+        return listCar;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setListCar(List<Car> listCar) {
+        this.listCar = listCar;
     }
-
-
 }
