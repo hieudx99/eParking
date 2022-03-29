@@ -1,4 +1,4 @@
-package com.example.eparking.view;
+package com.example.eparking.view.user;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.eparking.R;
 import com.example.eparking.model.User;
 import com.example.eparking.service.UserService;
+import com.example.eparking.view.LoginActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

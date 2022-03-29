@@ -14,8 +14,7 @@ import com.example.eparking.R;
 import com.example.eparking.service.UserService;
 import com.example.eparking.model.User;
 import com.example.eparking.model.dto.Credential;
-
-import java.util.Locale;
+import com.example.eparking.view.user.SignUpActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

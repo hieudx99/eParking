@@ -12,7 +12,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:label="Signup"
-            android:name=".view.SignUpActivity"
+            android:name=".view.user.SignUpActivity"
             android:exported="false" />
         <activity
             android:label="Login"
