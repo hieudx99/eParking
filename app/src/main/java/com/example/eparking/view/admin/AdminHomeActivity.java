@@ -1,4 +1,4 @@
-package com.example.eparking.view.user;
+package com.example.eparking.view.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,40 +12,34 @@ import android.widget.TextView;
 import com.example.eparking.R;
 import com.example.eparking.model.User;
 import com.example.eparking.view.LoginActivity;
-import com.example.eparking.view.admin.AdminHomeActivity;
 
-public class UserHomeActivity extends AppCompatActivity {
+public class AdminHomeActivity extends AppCompatActivity {
 
     private ImageView toolbar_logout_icon;
     private TextView toolbar_title;
     private TextView txt_fullname;
-    private TextView txt_identityCard;
-    private TextView txt_telephone;
-    private ImageButton btn_parking;
-    private ImageButton btn_history;
-    private ImageButton btn_info;
+    private ImageButton btn_parking_info;
+    private ImageButton btn_user_info;
+    private ImageButton btn_statistic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_home_activity);
+        setContentView(R.layout.admin_home_activity);
 
         toolbar_logout_icon = findViewById(R.id.toolbar_logout_icon);
         toolbar_title = findViewById(R.id.toolbar_title);
         txt_fullname = findViewById(R.id.txt_fullname);
-        txt_identityCard = findViewById(R.id.txt_identityCard);
-        txt_telephone = findViewById(R.id.txt_telephone);
-        btn_parking = findViewById(R.id.btn_parking);
-        btn_history = findViewById(R.id.btn_history);
-        btn_info = findViewById(R.id.btn_info);
+        btn_parking_info = findViewById(R.id.btn_parking_info);
+        btn_user_info = findViewById(R.id.btn_user_info);
+        btn_statistic = findViewById(R.id.btn_statistic);
 
         toolbar_title.setText("MÀN HÌNH CHÍNH");
 
         Intent intent = getIntent();
         User user = (User) intent.getSerializableExtra("user");
+
         txt_fullname.setText(user.getFullname());
-        txt_identityCard.setText(user.getIdentityCard());
-        txt_telephone.setText(user.getTelephone());
 
         toolbar_logout_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,10 +48,25 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
+        btn_user_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnUserInfoListener();
+            }
+        });
+
+
     }
+
+    private void btnUserInfoListener() {
+        Intent intent = new Intent();
+        intent.setClass(AdminHomeActivity.this, SearchUserInfoActivity.class);
+        startActivity(intent);
+    }
+
     private void btnLogoutListener() {
         Intent intent = new Intent();
-        intent.setClass(UserHomeActivity.this, LoginActivity.class);
+        intent.setClass(AdminHomeActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 }

@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EParking"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.admin.UserDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.AdminHomeActivity"
+            android:exported="false" />
         <activity
             android:name=".view.user.UserHomeActivity"
             android:exported="false" />
@@ -25,7 +31,7 @@
         <activity
             android:name=".view.LoginActivity"
             android:exported="true"
-            android:label="Login" >
+            android:label="Login">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 

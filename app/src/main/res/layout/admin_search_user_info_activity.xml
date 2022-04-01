@@ -20,6 +20,7 @@
             android:orientation="horizontal"
             android:gravity="center">
             <EditText
+                android:id="@+id/edt_kw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="240dp"
@@ -28,6 +29,7 @@
                 android:background="@drawable/search_edittext"
                 android:paddingStart="10dp"/>
             <Button
+                android:id="@+id/btn_search"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="Tìm"
@@ -39,7 +41,12 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

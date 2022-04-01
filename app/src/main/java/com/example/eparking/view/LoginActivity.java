@@ -14,6 +14,7 @@ import com.example.eparking.R;
 import com.example.eparking.service.UserService;
 import com.example.eparking.model.User;
 import com.example.eparking.model.dto.Credential;
+import com.example.eparking.view.admin.AdminHomeActivity;
 import com.example.eparking.view.user.SignUpActivity;
 import com.example.eparking.view.user.UserHomeActivity;
 
@@ -67,13 +68,14 @@ public class LoginActivity extends AppCompatActivity {
         String username = edt_username.getText().toString();
         String password = edt_password.getText().toString();
         Credential credential = new Credential(username, password);
-        txt_message.setVisibility(View.VISIBLE);
+
         Call<User> checkLogin = UserService.USER_SERVICE.checkLogin(credential);
         checkLogin.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();
                 if (user == null) {
+                    txt_message.setVisibility(View.VISIBLE);
                     txt_message.setText("Invalid username or password");
                 } else {
                     String role = user.getRole().getName();
@@ -83,13 +85,17 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("user", user);
                         startActivity(intent);
                     } else if (role.equalsIgnoreCase("admin")) {
-                        txt_message.setText("Logged in as admin");
+                        Intent intent = new Intent();
+                        intent.setClass(LoginActivity.this, AdminHomeActivity.class);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
                     }
 
                 }
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                txt_message.setVisibility(View.VISIBLE);
                 txt_message.setText("Error");
             }
         });
