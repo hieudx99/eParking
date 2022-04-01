@@ -1,6 +1,8 @@
 package com.example.eparking.model;
 
-public class ParkingSlot {
+import java.io.Serializable;
+
+public class ParkingSlot implements Serializable {
     private int id;
     private String name;
     private String status;

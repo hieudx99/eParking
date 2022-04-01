@@ -1,6 +1,8 @@
 package com.example.eparking.model;
 
-public class PaymentMethod {
+import java.io.Serializable;
+
+public class PaymentMethod implements Serializable {
     private int id;
     private String name;
 

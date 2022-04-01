@@ -1,6 +1,8 @@
 package com.example.eparking.model;
 
-public class Role {
+import java.io.Serializable;
+
+public class Role implements Serializable {
     private int id;
     private String name;
 
