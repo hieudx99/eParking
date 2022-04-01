@@ -15,6 +15,7 @@ import com.example.eparking.service.UserService;
 import com.example.eparking.model.User;
 import com.example.eparking.model.dto.Credential;
 import com.example.eparking.view.user.SignUpActivity;
+import com.example.eparking.view.user.UserHomeActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,7 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     String role = user.getRole().getName();
                     if (role.equalsIgnoreCase("user")) {
-                        txt_message.setText("Logged in as user");
+                        Intent intent = new Intent();
+                        intent.setClass(LoginActivity.this, UserHomeActivity.class);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
                     } else if (role.equalsIgnoreCase("admin")) {
                         txt_message.setText("Logged in as admin");
                     }

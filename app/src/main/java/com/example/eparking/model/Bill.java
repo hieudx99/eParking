@@ -1,6 +1,8 @@
 package com.example.eparking.model;
 
-public class Bill {
+import java.io.Serializable;
+
+public class Bill implements Serializable {
     private int id;
     private String createDate;
     private String startTime;
