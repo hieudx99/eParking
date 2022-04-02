@@ -1,6 +1,8 @@
 package com.example.eparking.model.dto;
 
-public class Credential {
+import java.io.Serializable;
+
+public class Credential implements Serializable {
     private String username;
     private String password;
 

@@ -55,12 +55,25 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
 
+        btn_statistic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnStatisticListener();
+            }
+        });
+
 
     }
 
     private void btnUserInfoListener() {
         Intent intent = new Intent();
         intent.setClass(AdminHomeActivity.this, SearchUserInfoActivity.class);
+        startActivity(intent);
+    }
+
+    private void btnStatisticListener() {
+        Intent intent = new Intent();
+        intent.setClass(AdminHomeActivity.this, StatisticActivity.class);
         startActivity(intent);
     }
 
