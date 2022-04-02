@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EParking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.admin.StatisticActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.admin.UserDetailActivity"
             android:exported="false" />
         <activity
