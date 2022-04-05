@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">eParking</string>
+    <string name="full_name">HỌ VÀ TÊN</string>
+    <string name="identity_number">CHỨNG MINH THƯ</string>
+    <string name="phone_number">SỐ ĐIỆN THOẠI</string>
+    <string name="address">ĐỊA CHỈ</string>
+    <string name="licence_plate">BIỂN SỐ XE</string>
+    <string name="car_name">TÊN XE</string>
+    <string name="edit">SỬA</string>
+    <string name="save">LƯU</string>
 </resources>

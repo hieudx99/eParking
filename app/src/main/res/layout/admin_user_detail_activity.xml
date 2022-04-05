@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HỌ VÀ TÊN"
+                android:text="@string/full_name"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CHỨNG MINH THƯ"
+                android:text="@string/identity_number"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SỐ ĐIỆN THOẠI"
+                android:text="@string/phone_number"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
@@ -108,7 +108,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ĐỊA CHỈ"
+                android:text="@string/address"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
@@ -126,13 +126,31 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
 
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit"
+                app:layout_constraintEnd_toStartOf="@+id/button2"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"></Button>
 
-
-
-
-
-
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></Button>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>
