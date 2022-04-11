@@ -6,7 +6,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 public interface RetrofitService {
 
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.105:8080/eParking/") //IP LAN
+            .baseUrl("https://e-parking-api.herokuapp.com/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build();
 
