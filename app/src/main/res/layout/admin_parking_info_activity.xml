@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.admin.ParkingInfoActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_textview_with_border"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="Còn trống"/>
+
+        <TextView
+            android:id="@+id/txt_freeSlot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:text="9/15"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_height="1dp"
+        android:background="#515751"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="Danh sách ô đỗ"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_parking_slot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_view_parking_slot_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/primary_color"
+        android:text="XEM CHI TIẾT"/>
+
+</LinearLayout>

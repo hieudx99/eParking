@@ -14,6 +14,9 @@ public class Bill implements Serializable {
     private ParkingSlot parkingSlot;
     private PaymentMethod paymentMethod;
 
+    public Bill() {
+    }
+
     public Bill(int id, String createDate, String startTime, String endTime, double total, String paymentStatus,
                 User user, Car car, ParkingSlot parkingSlot, PaymentMethod paymentMethod) {
         this.id = id;

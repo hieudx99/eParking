@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.user.ParkingTicketActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:background="@color/hearder_background_color"
+        android:src="@drawable/header_img"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mã hoá đơn"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_bill_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="102"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Biển số xe"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_license_plate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="11111111111"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời gian đỗ xe"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_parking_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="1 giờ"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời gian bắt đầu"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="8:30-11/04/2022"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời gian kết thúc"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="9:30-11/04/1999"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ô đỗ xe"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_parking_slot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="A1"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đơn giá"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_unit_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="đ50.000"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thành tiền"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="đ50.000"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="25dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hình thức thanh toán"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/txt_parking_ticket_payment_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Zalo Pay"
+                android:textSize="15sp"
+                android:textColor="#6F6E6E"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_parking_ticket_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xác nhận thanh toán"
+        android:backgroundTint="@color/primary_color"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

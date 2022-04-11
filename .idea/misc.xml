@@ -26,15 +26,24 @@
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_edittext.xml" value="0.2985" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_edittext_with_border.xml" value="0.2345" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_edittext_with_border_disable.xml" value="0.2345" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_textview_with_border.xml" value="0.2365" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_textview_with_border_disable.xml" value="0.2365" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_textview_with_border_primary.xml" value="0.2365" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/rounded_textview_with_border_selected.xml" value="0.1" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/search_button.xml" value="0.209" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/drawable/search_edittext.xml" value="0.209" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/admin_home_activity.xml" value="0.33" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/admin_parking_info_activity.xml" value="0.38697916666666665" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/admin_search_user_info_activity.xml" value="0.25" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/admin_user_detail_activity.xml" value="0.38697916666666665" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/home_toolbar.xml" value="0.2140625" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/item_parking_slot.xml" value="0.38697916666666665" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/item_user_info.xml" value="0.33" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/item_user_stat.xml" value="0.38697916666666665" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/login_activity.xml" value="0.33" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/parking_activity.xml" value="0.33" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/parking_detail_activity.xml" value="0.38697916666666665" />
+        <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/parking_ticket_activity.xml" value="0.33" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/signup_activity.xml" value="0.33" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/statistic_activity.xml" value="0.33" />
         <entry key="..\:/2-4/Mobile/Code/eParking/app/src/main/res/layout/toolbar.xml" value="0.5" />

@@ -13,6 +13,21 @@
         android:theme="@style/Theme.EParking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.user.ParkingHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.ParkingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.ParkingTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.ParkingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.ParkingInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.admin.StatisticActivity"
             android:exported="false" />
         <activity

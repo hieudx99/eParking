@@ -24,6 +24,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private ImageButton btn_parking;
     private ImageButton btn_history;
     private ImageButton btn_info;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class UserHomeActivity extends AppCompatActivity {
         toolbar_title.setText("MÀN HÌNH CHÍNH");
 
         Intent intent = getIntent();
-        User user = (User) intent.getSerializableExtra("user");
+        user = (User) intent.getSerializableExtra("user");
         txt_fullname.setText(user.getFullname());
         txt_identityCard.setText(user.getIdentityCard());
         txt_telephone.setText(user.getTelephone());
@@ -54,7 +55,36 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
+        btn_parking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnParkingListener();
+            }
+        });
+
+        btn_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnHistoryListener();
+            }
+        });
+
     }
+
+    private void btnHistoryListener() {
+        Intent intent = new Intent();
+        intent.setClass(UserHomeActivity.this, ParkingActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
+    private void btnParkingListener() {
+        Intent intent = new Intent();
+        intent.setClass(UserHomeActivity.this, ParkingActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
     private void btnLogoutListener() {
         Intent intent = new Intent();
         intent.setClass(UserHomeActivity.this, LoginActivity.class);

@@ -62,7 +62,20 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
 
+        btn_parking_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnParkingInfoListener();
+            }
+        });
 
+
+    }
+
+    private void btnParkingInfoListener() {
+        Intent intent = new Intent();
+        intent.setClass(AdminHomeActivity.this, ParkingInfoActivity.class);
+        startActivity(intent);
     }
 
     private void btnUserInfoListener() {

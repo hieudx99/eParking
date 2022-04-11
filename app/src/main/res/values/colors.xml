@@ -9,5 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary_color">#014282</color>
     <color name="secondary_color">#2980B9</color>
+    <color name="disable_color">#C4C4C4</color>
+    <color name="selected_color">#5AE25F</color>
+
     <color name="hearder_background_color">#ECF0F1</color>
 </resources>

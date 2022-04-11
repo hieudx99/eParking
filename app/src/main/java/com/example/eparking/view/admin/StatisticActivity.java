@@ -62,7 +62,7 @@ public class StatisticActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.statistic_activity);
+        setContentView(R.layout.admin_statistic_activity);
 
         toolbar_back_icon = findViewById(R.id.toolbar_back_icon);
         toolbar_title = findViewById(R.id.toolbar_title);

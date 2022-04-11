@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.user.ParkingActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_textview_with_border"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="Còn trống"/>
+
+                <TextView
+                    android:id="@+id/txt_parking_freeSlot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/primary_color"
+                    android:text="9/15"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="Danh sách ô đỗ"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_parking_parking_slot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chọn biển số"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="26dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="23dp">
+                    <TextView
+                        android:id="@+id/txt_parking_license_plate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="103dp"
+                        android:minHeight="35dp"
+                        android:text="29A-68686"
+                        android:gravity="center"
+                        android:padding="7dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/primary_color"
+                        android:background="@drawable/rounded_textview_with_border_primary"/>
+                    <Button
+                        android:id="@+id/btn_parking_select_license_plate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chọn biển số"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/primary_color"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chọn thời gian"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="23dp"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bắt đầu:"
+                            android:textSize="16sp"
+                            android:layout_marginStart="3dp"
+                            android:textColor="@color/black"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="bottom">
+                            <EditText
+                                android:id="@+id/edt_start"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="130dp"
+                                android:text="08:30-06/03/2022"
+                                android:textSize="16sp"
+                                android:focusableInTouchMode="false"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_calendar" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="20dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kết thúc:"
+                            android:layout_marginStart="3dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="bottom">
+                            <EditText
+                                android:id="@+id/edt_end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="08:30-06/03/2022"
+                                android:textSize="16sp"
+                                android:minWidth="130dp"
+                                android:focusableInTouchMode="false"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_calendar" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hình thức thanh toán"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="23dp">
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RadioButton
+                            android:id="@+id/radio_zalopay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                            android:id="@+id/radio_momo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+                            <ImageView
+                                android:layout_width="37dp"
+                                android:layout_height="37dp"
+                                android:src="@drawable/ic_zalopay"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Zalo Pay"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                android:layout_marginStart="10dp"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+                            <ImageView
+                                android:layout_width="37dp"
+                                android:layout_height="37dp"
+                                android:src="@drawable/ic_momo"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Momo"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                android:layout_marginStart="10dp"
+                                />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:id="@+id/btn_parking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ĐẶT CHỖ"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
