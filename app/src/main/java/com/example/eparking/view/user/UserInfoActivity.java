@@ -160,6 +160,11 @@ public class UserInfoActivity extends AppCompatActivity {
     }
 
     private void btnEditListener() {
+        enableEditMode();
+
+    }
+
+    private void enableEditMode() {
         edt_fullname.setEnabled(true);
         edt_fullname.setBackground(edt_fullname.getResources().getDrawable(R.drawable.rounded_edittext_with_border));
         edt_identityCard.setEnabled(true);
@@ -173,7 +178,22 @@ public class UserInfoActivity extends AppCompatActivity {
         btn_edit.setBackgroundColor(btn_edit.getContext().getResources().getColor(R.color.button_disable_color));
         btn_save.setEnabled(true);
         btn_save.setBackgroundColor(btn_save.getContext().getResources().getColor(R.color.primary_color));
+    }
 
+    private void disableEditMode() {
+        edt_fullname.setEnabled(false);
+        edt_fullname.setBackground(edt_fullname.getResources().getDrawable(R.drawable.rounded_edittext_with_border_disable));
+        edt_identityCard.setEnabled(false);
+        edt_identityCard.setBackground(edt_fullname.getResources().getDrawable(R.drawable.rounded_edittext_with_border_disable));
+        edt_telephone.setEnabled(false);
+        edt_telephone.setBackground(edt_fullname.getResources().getDrawable(R.drawable.rounded_edittext_with_border_disable));
+        edt_address.setEnabled(false);
+        edt_address.setBackground(edt_fullname.getResources().getDrawable(R.drawable.rounded_edittext_with_border_disable));
+        btn_edit.setEnabled(true);
+        btn_edit.setBackgroundColor(btn_edit.getContext().getResources().getColor(R.color.primary_color));
+        btn_save.setEnabled(false);
+        btn_save.setTextColor(btn_edit.getResources().getColor(R.color.white));
+        btn_save.setBackgroundColor(btn_save.getContext().getResources().getColor(R.color.button_disable_color));
     }
 
     private void showAlert(String message) {
@@ -185,10 +205,15 @@ public class UserInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (message.equalsIgnoreCase("Lưu thành công!")) {
-                    finish();
-                    intent.setClass(UserInfoActivity.this, UserInfoActivity.class);
-                    intent.putExtra("user", user);
-                    startActivity(intent);
+//                    finish();
+//                    intent.setClass(UserInfoActivity.this, UserInfoActivity.class);
+//                    intent.putExtra("user", user);
+//                    startActivity(intent);
+                    disableEditMode();
+                    edt_fullname.setText(user.getFullname());
+                    edt_identityCard.setText(user.getIdentityCard());
+                    edt_telephone.setText(user.getTelephone());
+                    edt_address.setText(user.getAddress());
                 }
             }
         });

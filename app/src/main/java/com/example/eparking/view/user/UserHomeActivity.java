@@ -122,6 +122,11 @@ public class UserHomeActivity extends AppCompatActivity {
         if (requestCode == AppConfig.REQUEST_CODE_USER) {
             if (resultCode == Activity.RESULT_OK) {
                 this.user = (User) data.getSerializableExtra("user");
+                finish();
+                Intent intent = new Intent();
+                intent.setClass(UserHomeActivity.this, UserHomeActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
             }
         }
     }
