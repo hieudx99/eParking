@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.user.ParkingDetailActivity">
+    tools:context=".view.user.ParkingDetailHistoryActivity">
 
     <include layout="@layout/toolbar"/>
 
@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_bill_id"
+                android:id="@+id/txt_parking_detail_history_bill_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -82,7 +82,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_license_plate"
+                android:id="@+id/txt_parking_detail_history_license_plate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -127,7 +127,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_parking_time"
+                android:id="@+id/txt_parking_detail_history_parking_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -166,7 +166,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_start_time"
+                android:id="@+id/txt_parking_detail_history_start_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -205,7 +205,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_end_time"
+                android:id="@+id/txt_parking_detail_history_end_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -244,7 +244,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_parking_slot"
+                android:id="@+id/txt_parking_detail_history_parking_slot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -289,7 +289,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_unit_price"
+                android:id="@+id/txt_parking_detail_history_unit_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -328,7 +328,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_total"
+                android:id="@+id/txt_parking_detail_history_total"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -373,7 +373,7 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
-                android:id="@+id/txt_parking_detail_payment_method"
+                android:id="@+id/txt_parking_detail_history_payment_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -386,11 +386,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_parking_detail_finish"
+        android:id="@+id/btn_parking_detail_history_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Về trang chủ"
-        android:backgroundTint="@color/primary_color"
+        android:text="Đã thanh toán"
+        android:backgroundTint="#6F6E6E"
         android:textStyle="bold"
         android:layout_gravity="center"/>
 

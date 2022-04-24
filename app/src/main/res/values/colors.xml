@@ -11,6 +11,7 @@
     <color name="secondary_color">#2980B9</color>
     <color name="disable_color">#C4C4C4</color>
     <color name="selected_color">#5AE25F</color>
+    <color name="button_disable_color">#6F6E6E</color>
 
-    <color name="hearder_background_color">#ECF0F1</color>
+    <color name="header_background_color">#ECF0F1</color>
 </resources>

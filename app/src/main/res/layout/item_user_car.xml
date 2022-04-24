@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BIỂN SỐ XE (XE 1)"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold" />
 
@@ -43,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TÊN XE (XE 1)"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="bold" />
 

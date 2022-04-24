@@ -6,12 +6,28 @@
 
     <application
         android:allowBackup="true"
+        android:name="com.example.eparking.view.MyApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EParking"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.user.CarInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.ListCarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.UserParkingHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.UserInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.ParkingDetailHistoryActivity"
+            android:exported="false" />
         <activity
             android:name=".view.user.ParkingHistoryActivity"
             android:exported="false" />

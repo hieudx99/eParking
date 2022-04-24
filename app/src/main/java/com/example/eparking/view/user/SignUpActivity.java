@@ -89,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
             });
             alert.create().show();
         } else {
-            User user = new User(username, password, fullname, identityCard, telephone, address);
+            User user = new User(username, password, fullname, identityCard, "", telephone, address);
             Call<User> regiser = UserService.USER_SERVICE.register(user);
             regiser.enqueue(new Callback<User>() {
                 @Override

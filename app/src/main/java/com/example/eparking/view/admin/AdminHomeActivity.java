@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.eparking.R;
 import com.example.eparking.model.User;
+import com.example.eparking.service.SessionManager;
 import com.example.eparking.view.LoginActivity;
 
 public class AdminHomeActivity extends AppCompatActivity {
@@ -91,6 +92,8 @@ public class AdminHomeActivity extends AppCompatActivity {
     }
 
     private void btnLogoutListener() {
+        SessionManager sessionManager = new SessionManager();
+        sessionManager.clearJwtToken();
         Intent intent = new Intent();
         intent.setClass(AdminHomeActivity.this, LoginActivity.class);
         startActivity(intent);

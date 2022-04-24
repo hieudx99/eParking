@@ -8,6 +8,7 @@ public class User implements Serializable {
     private int id;
     private String fullname;
     private String identityCard;
+    private String email;
     private String telephone;
     private String address;
     private String username;
@@ -18,11 +19,12 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(int id, String username, String password, String fullname, String identityCard, String telephone, String address, Role role, List<Car> listCar) {
+    public User(int id, String username, String password, String fullname, String identityCard, String email, String telephone, String address, Role role, List<Car> listCar) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.fullname = fullname;
+        this.email = email;
         this.identityCard = identityCard;
         this.telephone = telephone;
         this.address = address;
@@ -30,10 +32,11 @@ public class User implements Serializable {
         this.listCar = listCar;
     }
 
-    public User(String username, String password, String fullname, String identityCard, String telephone, String address) {
+    public User(String username, String password, String fullname, String identityCard, String email, String telephone, String address) {
         this.username = username;
         this.password = password;
         this.fullname = fullname;
+        this.email = email;
         this.identityCard = identityCard;
         this.telephone = telephone;
         this.address = address;
@@ -66,6 +69,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFullname() {

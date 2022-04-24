@@ -32,6 +32,7 @@ import com.example.eparking.model.PaymentMethod;
 import com.example.eparking.model.User;
 import com.example.eparking.service.ParkingSlotService;
 import com.example.eparking.service.PaymentMethodService;
+import com.example.eparking.view.adapter.LicensePlateAdapter;
 import com.example.eparking.view.adapter.ParkingSlotAdapter;
 import com.example.eparking.view.admin.ParkingInfoActivity;
 
@@ -49,11 +50,14 @@ public class ParkingActivity extends AppCompatActivity {
 
     private ImageView toolbar_back_icon;
     private TextView toolbar_title;
+    //recycler
     private RecyclerView rcvParkingSlot;
     private ParkingSlotAdapter parkingSlotAdapter;
+
+    private RecyclerView rcvLicensePlate;
+    private LicensePlateAdapter licensePlateAdapter;
+    //end
     private TextView txtFreeSlot;
-    private TextView txtLicensePlate;
-    private Button btnSelectLicensePlate;
     private EditText edtStart;
     private EditText edtEnd;
     //
@@ -84,11 +88,8 @@ public class ParkingActivity extends AppCompatActivity {
     private PaymentMethod selectedPaymentMethod;
 
 
-    //test
-
     private RadioButton radioZaloPay;
     private RadioButton radioMomo;
-    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,10 +97,13 @@ public class ParkingActivity extends AppCompatActivity {
         setContentView(R.layout.parking_activity);
         toolbar_back_icon = findViewById(R.id.toolbar_back_icon);
         toolbar_title = findViewById(R.id.toolbar_title);
-        rcvParkingSlot = findViewById(R.id.rcv_parking_parking_slot);
+
         txtFreeSlot = findViewById(R.id.txt_parking_freeSlot);
-        txtLicensePlate = findViewById(R.id.txt_parking_license_plate);
-        btnSelectLicensePlate = findViewById(R.id.btn_parking_select_license_plate);
+        rcvParkingSlot = findViewById(R.id.rcv_parking_parking_slot);
+        rcvLicensePlate = findViewById(R.id.rcv_license_plate);
+
+
+//        txtLicensePlate = findViewById(R.id.txt_parking_license_plate);
         edtStart = findViewById(R.id.edt_start);
         edtEnd = findViewById(R.id.edt_end);
         edtStart.setInputType(InputType.TYPE_NULL);
@@ -117,11 +121,16 @@ public class ParkingActivity extends AppCompatActivity {
         });
         // end
 
-        // init recyclerview
-        parkingSlotAdapter = new ParkingSlotAdapter(this, new ParkingSlotAdapter.ParkingSlotItemOnClickListener() {
+        //get User from previous activity
+        Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
+        //end
+
+        // init recyclerview parking slot
+        parkingSlotAdapter = new ParkingSlotAdapter(true,this, new ParkingSlotAdapter.ParkingSlotItemOnClickListener() {
             @Override
             public void onClick(ParkingSlot parkingSlot) {
-                parkingSlotItemListener(parkingSlot);
+                selectedParkingSlot = parkingSlot;
             }
         });
         GridLayoutManager layoutManager = new GridLayoutManager(this, 5) {
@@ -133,15 +142,29 @@ public class ParkingActivity extends AppCompatActivity {
         rcvParkingSlot.setLayoutManager(layoutManager);
         //end
 
+        //init recycler view license plate
+        licensePlateAdapter = new LicensePlateAdapter(this, new LicensePlateAdapter.LicensePlateItemOnclickListener() {
+            @Override
+            public void onClick(Car car) {
+                selectedCar = car;
+            }
+        });
+        GridLayoutManager layoutManager1 = new GridLayoutManager(this, 3) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        rcvLicensePlate.setLayoutManager(layoutManager1);
+        if (user.getListCar() != null && user.getListCar().size() > 0) {
+            licensePlateAdapter.setData(user.getListCar());
+        }
+        rcvLicensePlate.setAdapter(licensePlateAdapter);
+        //end
+
         getListParkingSlot();
         getListPaymentMethod();
 
-        //get User from previous activity
-        Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("user");
-        txtLicensePlate.setText(user.getListCar().get(0).getLicensePlate());
-        selectedCar = user.getListCar().get(0);
-        //end
 
         //xu ly Calendar
         Calendar calendar = Calendar.getInstance();
@@ -193,6 +216,27 @@ public class ParkingActivity extends AppCompatActivity {
 
     private void btnParkListener() {
         Bill bill = new Bill();
+        bill.setPaymentStatus("O");
+        bill.setUser(user);
+        //hardcode car[0]
+
+        //
+        if (selectedParkingSlot == null) {
+            String message = "Chưa chọn chỗ đỗ xe!";
+            showMessage(message);
+            return;
+        }
+        else {
+            bill.setParkingSlot(selectedParkingSlot);
+        }
+        if (selectedCar == null) {
+            String message = "Chưa chọn xe!";
+            showMessage(message);
+            return;
+        } else {
+            bill.setCar(selectedCar);
+        }
+
         if (isValidDate(startTime, endTime)) {
             bill.setStartTime(startTime);
             bill.setEndTime(endTime);
@@ -202,19 +246,6 @@ public class ParkingActivity extends AppCompatActivity {
             showMessage(message);
             return;
         }
-        bill.setPaymentStatus("O");
-        bill.setUser(user);
-        //hardcode car[0]
-        bill.setCar(selectedCar);
-        //
-        if (selectedParkingSlot == null) {
-            String message = "Chưa chọn chỗ đỗ xe";
-            showMessage(message);
-            return;
-        }
-        else {
-            bill.setParkingSlot(selectedParkingSlot);
-        }
 
         //select payment method
         if (radioZaloPay.isChecked()) {
@@ -222,6 +253,10 @@ public class ParkingActivity extends AppCompatActivity {
         }
         else if (radioMomo.isChecked()) {
             selectedPaymentMethod = getPaymentMethod("MOMO");
+        } else {
+            String message = "Chưa chọn hình thức thanh toán";
+            showMessage(message);
+            return;
         }
 
         bill.setPaymentMethod(selectedPaymentMethod);
@@ -261,10 +296,6 @@ public class ParkingActivity extends AppCompatActivity {
         return paymentMethod;
     }
 
-
-    private void parkingSlotItemListener(ParkingSlot parkingSlot) {
-        this.selectedParkingSlot = parkingSlot;
-    }
 
     private void edtEndListener() {
         setDateListener = new DatePickerDialog.OnDateSetListener() {

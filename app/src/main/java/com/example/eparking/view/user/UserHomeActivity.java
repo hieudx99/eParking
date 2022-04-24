@@ -1,7 +1,10 @@
 package com.example.eparking.view.user;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +14,15 @@ import android.widget.TextView;
 
 import com.example.eparking.R;
 import com.example.eparking.model.User;
+import com.example.eparking.service.SessionManager;
+import com.example.eparking.view.AppConfig;
 import com.example.eparking.view.LoginActivity;
 import com.example.eparking.view.admin.AdminHomeActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class UserHomeActivity extends AppCompatActivity {
 
@@ -25,6 +35,8 @@ public class UserHomeActivity extends AppCompatActivity {
     private ImageButton btn_history;
     private ImageButton btn_info;
     private User user;
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +60,12 @@ public class UserHomeActivity extends AppCompatActivity {
         txt_identityCard.setText(user.getIdentityCard());
         txt_telephone.setText(user.getTelephone());
 
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.server_client_id))
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(this, gso);
+
         toolbar_logout_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,11 +87,24 @@ public class UserHomeActivity extends AppCompatActivity {
             }
         });
 
+        btn_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnInfoListener();
+            }
+        });
+    }
+
+    private void btnInfoListener() {
+        Intent intent = new Intent();
+        intent.setClass(UserHomeActivity.this, UserInfoActivity.class);
+        intent.putExtra("user", user);
+        startActivityForResult(intent, AppConfig.REQUEST_CODE_USER);
     }
 
     private void btnHistoryListener() {
         Intent intent = new Intent();
-        intent.setClass(UserHomeActivity.this, ParkingActivity.class);
+        intent.setClass(UserHomeActivity.this, ParkingHistoryActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
     }
@@ -85,9 +116,32 @@ public class UserHomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AppConfig.REQUEST_CODE_USER) {
+            if (resultCode == Activity.RESULT_OK) {
+                this.user = (User) data.getSerializableExtra("user");
+            }
+        }
+    }
+
     private void btnLogoutListener() {
+        signOut();
+        SessionManager sessionManager = new SessionManager();
+        sessionManager.clearJwtToken();
+        finish();
         Intent intent = new Intent();
         intent.setClass(UserHomeActivity.this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    private void signOut() {
+        gsc.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
     }
 }

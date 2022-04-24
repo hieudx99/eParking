@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/hearder_background_color"
+        android:background="@color/header_background_color"
         android:minHeight="94dp"
         android:weightSum="12">
 

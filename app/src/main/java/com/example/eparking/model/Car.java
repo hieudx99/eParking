@@ -6,14 +6,14 @@ public class Car implements Serializable {
     private int id;
     private String name;
     private String color;
-    private String brand;
+    private Brand brand;
     private String licensePlate;
     private int seatNumber;
 
     public Car() {
     }
 
-    public Car(int id, String name, String color, String brand, String licensePlate, int seatNumber) {
+    public Car(int id, String name, String color, Brand brand, String licensePlate, int seatNumber) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -46,11 +46,11 @@ public class Car implements Serializable {
         this.color = color;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 

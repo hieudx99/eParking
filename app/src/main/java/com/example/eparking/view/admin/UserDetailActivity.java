@@ -58,13 +58,9 @@ public class UserDetailActivity extends AppCompatActivity {
 
         //init recycler view
         LinearLayoutManager layoutManager = new LinearLayoutManager(UserDetailActivity.this,
-                LinearLayoutManager.VERTICAL, false) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
+                LinearLayoutManager.VERTICAL, false);
         rcvUserCar.setLayoutManager(layoutManager);
+        rcvUserCar.setNestedScrollingEnabled(false);
         userCarAdapter = new UserCarAdapter();
         userCarAdapter.setData(user.getListCar());
         rcvUserCar.setAdapter(userCarAdapter);

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,8 +19,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eparking.R;
+import com.example.eparking.model.User;
 import com.example.eparking.model.UserStat;
 import com.example.eparking.model.dto.StartEndDateDTO;
 import com.example.eparking.service.UserStatService;
@@ -57,6 +60,8 @@ public class StatisticActivity extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener setListener;
     private RecyclerView rcv_user_stat;
     private UserStatAdapter userStatAdapter;
+
+    private User selectedUser;
 
 
     @Override
@@ -126,14 +131,19 @@ public class StatisticActivity extends AppCompatActivity {
         userStatAdapter = new UserStatAdapter(new UserStatAdapter.UserStatItemOnClickListener() {
             @Override
             public void onClick(UserStat userStat) {
-                userStatItemListener();
+                userStatItemListener(userStat);
             }
         });
         
     }
 
-    private void userStatItemListener() {
-
+    private void userStatItemListener(UserStat userStat) {
+        Intent intent = new Intent();
+        intent.setClass(StatisticActivity.this, UserParkingHistoryActivity.class);
+        intent.putExtra("userStat", userStat);
+        intent.putExtra("startDate", date_from);
+        intent.putExtra("endDate", date_to);
+        startActivity(intent);
     }
 
     private void btnViewListener() {

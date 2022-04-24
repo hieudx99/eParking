@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eparking.R;
+import com.example.eparking.model.Bill;
 import com.example.eparking.model.ParkingSlot;
+import com.example.eparking.service.BillService;
 import com.example.eparking.service.ParkingSlotService;
 import com.example.eparking.view.adapter.ParkingSlotAdapter;
+import com.example.eparking.view.user.ParkingDetailHistoryActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +53,7 @@ public class ParkingInfoActivity extends AppCompatActivity {
 
         toolbar_title.setText("THÔNG TIN BÃI");
 
-        parkingSlotAdapter = new ParkingSlotAdapter(this, new ParkingSlotAdapter.ParkingSlotItemOnClickListener() {
+        parkingSlotAdapter = new ParkingSlotAdapter(false, this, new ParkingSlotAdapter.ParkingSlotItemOnClickListener() {
             @Override
             public void onClick(ParkingSlot parkingSlot) {
                 parkingSlotItemListener(parkingSlot);
@@ -74,7 +78,34 @@ public class ParkingInfoActivity extends AppCompatActivity {
     }
 
     private void btnViewParkingSlotDetailListener() {
-        System.out.println(this.selectedParkingSlot.getName());
+        Call<Bill> getBillByParkingSlot = BillService.BILL_SERVICE.getBillByParkingSlot(selectedParkingSlot.getId());
+        getBillByParkingSlot.enqueue(new Callback<Bill>() {
+            @Override
+            public void onResponse(Call<Bill> call, Response<Bill> response) {
+                Bill bill = response.body();
+                if (bill != null) {
+                    Intent intent = new Intent();
+                    intent.setClass(ParkingInfoActivity.this, ParkingDetailHistoryActivity.class);
+                    intent.putExtra("bill", bill);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Bill> call, Throwable t) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(ParkingInfoActivity.this);
+                alert.setTitle("ERROR!");
+                alert.setIcon(R.mipmap.ic_launcher);
+                alert.setMessage("Không load được bill");
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alert.create().show();
+            }
+        });
     }
 
     private void parkingSlotItemListener(ParkingSlot parkingSlot) {

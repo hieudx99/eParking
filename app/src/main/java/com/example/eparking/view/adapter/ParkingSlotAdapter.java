@@ -2,6 +2,7 @@ package com.example.eparking.view.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,15 @@ public class ParkingSlotAdapter extends RecyclerView.Adapter<ParkingSlotAdapter.
     private Context mContext;
     private ParkingSlotItemOnClickListener parkingSlotItemOnClickListener;
     private int selectedPosition = -1;
+    private boolean userMode;
 
 //    public ParkingSlotAdapter(Context mContext) {
 //        this.mContext = mContext;
 //    }
 
 
-    public ParkingSlotAdapter(Context mContext, ParkingSlotItemOnClickListener parkingSlotItemOnClickListener) {
+    public ParkingSlotAdapter(Boolean userMode, Context mContext, ParkingSlotItemOnClickListener parkingSlotItemOnClickListener) {
+        this.userMode = userMode;
         this.mContext = mContext;
         this.parkingSlotItemOnClickListener = parkingSlotItemOnClickListener;
     }
@@ -57,10 +60,13 @@ public class ParkingSlotAdapter extends RecyclerView.Adapter<ParkingSlotAdapter.
         if (selectedPosition == position) {
             holder.txtParkingSlotName.setText(parkingSlot.getName());
             holder.txtParkingSlotName.setBackgroundResource(R.drawable.rounded_textview_with_border_selected);
+            holder.txtParkingSlotName.setTextColor(mContext.getResources().getColor(R.color.white));
         } else {
             if (parkingSlot.getStatus().equalsIgnoreCase("U")) {
+                holder.txtParkingSlotName.setTextColor(mContext.getResources().getColor(R.color.black));
                 holder.txtParkingSlotName.setBackgroundResource(R.drawable.rounded_textview_with_border_disable);
             } else {
+                holder.txtParkingSlotName.setTextColor(mContext.getResources().getColor(R.color.black));
                 holder.txtParkingSlotName.setBackgroundResource(R.drawable.rounded_textview_with_border);
             }
         }
@@ -69,11 +75,24 @@ public class ParkingSlotAdapter extends RecyclerView.Adapter<ParkingSlotAdapter.
             @Override
             public void onClick(View view) {
                 parkingSlotItemOnClickListener.onClick(parkingSlot);
-                if (parkingSlot.getStatus().equalsIgnoreCase("U")) {
+                if (userMode == true && parkingSlot.getStatus().equalsIgnoreCase("U")) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
                     alert.setTitle("Thông báo");
                     alert.setIcon(R.mipmap.ic_launcher_round);
                     alert.setMessage("\nÔ bạn chọn đã được đặt!\n");
+                    alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    });
+                    alert.create().show();
+                    return;
+                }
+                else if (userMode == false && parkingSlot.getStatus().equalsIgnoreCase("O")) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+                    alert.setTitle("Thông báo");
+                    alert.setIcon(R.mipmap.ic_launcher_round);
+                    alert.setMessage("\nÔ bạn chọn chưa được đặt!\n");
                     alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {

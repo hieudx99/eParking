@@ -10,7 +10,7 @@
 
     <include layout="@layout/toolbar"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,6 +33,7 @@
                     android:layout_height="wrap_content"
                     android:text="HỌ VÀ TÊN"
                     android:textSize="15dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <EditText
@@ -62,6 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CHỨNG MINH THƯ"
+                    android:textColor="@color/black"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
@@ -92,6 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SỐ ĐIỆN THOẠI"
+                    android:textColor="@color/black"
                     android:textSize="15dp"
                     android:textStyle="bold" />
                 <EditText
@@ -120,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ĐỊA CHỈ"
+                    android:textColor="@color/black"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
@@ -140,13 +144,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_admin_user_detail_list_car"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 
 
 =======
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
