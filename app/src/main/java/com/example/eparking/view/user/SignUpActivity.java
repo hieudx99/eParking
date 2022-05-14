@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText edt_fullname;
     private EditText edt_identityCard;
     private EditText edt_telephone;
+    private EditText edt_email;
     private EditText edt_address;
     private EditText edt_username;
     private EditText edt_password;
@@ -46,6 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         edt_fullname = findViewById(R.id.edt_fullname);
         edt_identityCard = findViewById(R.id.edt_identityCard);
         edt_telephone = findViewById(R.id.edt_telephone);
+        edt_email = findViewById(R.id.edt_email);
         edt_address = findViewById(R.id.edt_address);
         edt_username = findViewById(R.id.edt_username);
         edt_password = findViewById(R.id.edt_password);
@@ -72,28 +74,29 @@ public class SignUpActivity extends AppCompatActivity {
         String fullname = edt_fullname.getText().toString();
         String identityCard = edt_identityCard.getText().toString();
         String telephone = edt_telephone.getText().toString();
+        String email = edt_email.getText().toString();
         String address = edt_address.getText().toString();
         String username = edt_username.getText().toString();
         String password = edt_password.getText().toString();
         String password2 = edt_password2.getText().toString();
-        if (!password.equals(password2)) {
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Thông báo");
-            alert.setIcon(R.mipmap.ic_launcher_round);
-            alert.setMessage("Mật khẩu xác nhận không đúng!");
-            alert.setPositiveButton("cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
 
-                }
-            });
-            alert.create().show();
-        } else {
-            User user = new User(username, password, fullname, identityCard, "", telephone, address);
-            Call<User> regiser = UserService.USER_SERVICE.register(user);
-            regiser.enqueue(new Callback<User>() {
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
+        if (fullname.equals("") || identityCard.equals("") || telephone.equals("") ||
+                email.equals("") || address.equals("") || username.equals("") ||
+                password.equals("") || password2.equals("")) {
+            showAlert("Phải nhập tất cả các trường!");
+            return;
+        }
+
+        if (!password.equals(password2)) {
+            showAlert("Xác nhận mật khẩu không đúng");
+            return;
+        }
+        User user = new User(username, password, fullname, identityCard, email, telephone, address);
+        Call<User> regiser = UserService.USER_SERVICE.register(user);
+        regiser.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.code() == 200) {
                     User user1 = response.body();
                     if (user1 != null) {
                         AlertDialog.Builder alert = new AlertDialog.Builder(SignUpActivity.this);
@@ -110,26 +113,19 @@ public class SignUpActivity extends AppCompatActivity {
                         });
                         alert.create().show();
                     }
-
+                } else if (response.code() == 401) {
+                    showAlert("Unauthorized");
                 }
 
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(SignUpActivity.this);
-                    alert.setTitle("Thông báo");
-                    alert.setIcon(R.mipmap.ic_launcher);
-                    alert.setMessage("Đăng ký không thành công!\n" + t);
-                    alert.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+            }
 
-                        }
-                    });
-                    alert.create().show();
-                }
-            });
-        }
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                showAlert("Đăng ký không thành công");
+            }
+        });
     }
+
 
     private void btnBackOnClick() {
         Intent intent = new Intent();
@@ -137,7 +133,19 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void showAlert(String msg) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(SignUpActivity.this);
+        alert.setTitle("Thông báo");
+        alert.setIcon(R.mipmap.ic_launcher);
+        alert.setMessage(msg);
+        alert.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
+            }
+        });
+        alert.create().show();
+    }
 
 
 }
