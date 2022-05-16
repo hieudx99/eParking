@@ -185,7 +185,7 @@ public class StatisticActivity extends AppCompatActivity {
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Thông báo");
             alert.setIcon(R.mipmap.ic_launcher_round);
-            alert.setMessage("Ngày bắt đầu không được nhỏ hơn ngày kết thúc");
+            alert.setMessage("Khoảng thời gian không hợp lệ");
             alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {

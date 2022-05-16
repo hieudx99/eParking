@@ -1,10 +1,12 @@
 package com.example.eparking.view.admin;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -85,6 +87,9 @@ public class SearchUserInfoActivity extends AppCompatActivity {
                     userInfoAdapter.setData(listUser);
                     rcv_user_info.setAdapter(userInfoAdapter);
                 }
+                else {
+                    showAlert("Không có kết quả");
+                }
             }
 
             @Override
@@ -104,5 +109,19 @@ public class SearchUserInfoActivity extends AppCompatActivity {
 
     private void btnBackListener() {
         finish();
+    }
+
+    private void showAlert(String msg) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setIcon(R.mipmap.ic_launcher_round);
+        alert.setMessage(msg);
+        alert.setTitle("Thông báo");
+        alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.create().show();
     }
 }
