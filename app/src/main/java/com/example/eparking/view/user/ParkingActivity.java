@@ -242,7 +242,7 @@ public class ParkingActivity extends AppCompatActivity {
             bill.setEndTime(endTime);
         }
         else {
-            String message = "Thời gian bắt đầu không được nhỏ hơn thời gian kết thúc!";
+            String message = "Thời gian không hợp lệ!";
             showMessage(message);
             return;
         }
