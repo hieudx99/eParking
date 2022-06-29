@@ -22,16 +22,29 @@ import com.example.eparking.model.dto.UserCredential;
 import com.example.eparking.view.admin.AdminHomeActivity;
 import com.example.eparking.view.user.SignUpActivity;
 import com.example.eparking.view.user.UserHomeActivity;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.Login;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+
+import java.util.Arrays;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,9 +53,14 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txt_message;
     private Button btn_login;
     private Button btn_signup;
-    private ImageButton signInButton;
+    private ImageButton googleSignInButton;
+    private ImageButton facebookSignInButton;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
+
+    private LoginButton loginButton;
+    private CallbackManager callbackManager;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         txt_message = findViewById(R.id.txt_message);
         btn_login = findViewById(R.id.btn_login);
         btn_signup = findViewById(R.id.btn_signup);
-        signInButton = findViewById(R.id.btn_google_sign_in);
+        googleSignInButton = findViewById(R.id.btn_google_sign_in);
+        facebookSignInButton = findViewById(R.id.btn_facebook_sign_in);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,12 +95,42 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         gsc = GoogleSignIn.getClient(this, gso);
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
             }
         });
+
+        //facebook
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        handleFacebookSignInResult(loginResult);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(LoginActivity.this, "Facebook login cancel", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Toast.makeText(LoginActivity.this, "Facebook login error", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        facebookSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
+            }
+        });
+
+        //end
 
 
     }
@@ -100,11 +149,13 @@ public class LoginActivity extends AppCompatActivity {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+            handleGoogleSignInResult(task);
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    private void handleGoogleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             String googleAccessToken = account.getIdToken();
@@ -137,6 +188,31 @@ public class LoginActivity extends AppCompatActivity {
             updateUI(null);
         }
     }
+
+    private void handleFacebookSignInResult(LoginResult loginResult) {
+        AccessToken accessToken = loginResult.getAccessToken();
+        String facebookAccessToken = accessToken.getToken();
+        Call<User> facebook = UserService.USER_SERVICE.facebook(facebookAccessToken);
+        facebook.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                String token = response.headers().get("Authorization");
+                System.out.println(token);
+                SessionManager sessionManager = new SessionManager();
+                sessionManager.saveJwtToken(token);
+                updateUI(user);
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                txt_message.setVisibility(View.VISIBLE);
+                txt_message.setText("Login facebook error");
+            }
+        });
+
+    }
+
 
     private void updateUI(@NonNull User user) {
         Intent intent = new Intent();

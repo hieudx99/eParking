@@ -9,4 +9,10 @@
     <string name="edit">SỬA</string>
     <string name="save">LƯU</string>
     <string name="server_client_id">79214693346-ndqme1517s4falshkdhhd86mm24d8d9g.apps.googleusercontent.com</string>
+
+    <string name="facebook_app_id">1028870424482166</string>
+    <string name="fb_login_protocol_scheme">fb1028870424482166</string>
+    <string name="facebook_client_token">cf88a4af7fc691c38f8aa787a0398a31</string>
+
+
 </resources>

@@ -28,7 +28,8 @@ public interface RetrofitService {
     Retrofit retrofit = new Retrofit.Builder()
             .client(client)
 //            .baseUrl("https://e-parking-api.herokuapp.com/")
-            .baseUrl("http://10.0.2.2:8080/eParking/")
+//            .baseUrl("http://10.0.2.2:8080/eParking/")
+            .baseUrl("http://192.168.0.100:8080/eParking/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build();
 

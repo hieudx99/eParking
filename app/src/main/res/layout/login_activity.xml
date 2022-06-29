@@ -115,6 +115,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"/>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,6 +127,12 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/google"/>
+        <ImageButton
+            android:id="@+id/btn_facebook_sign_in"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/facebook"/>
     </LinearLayout>
 
 <!--    <LinearLayout-->

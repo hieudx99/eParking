@@ -34,5 +34,8 @@ public interface UserService {
     @POST("user/auth/google")
     Call<User> google(@Body String googleAccessToken);
 
+    @POST("user/auth/facebook")
+    Call<User> facebook(@Body String facebookAccessToken);
+
 
 }
